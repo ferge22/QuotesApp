@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <app-header :maxQuotes="maxQuotes" :quoteCount="quotes.length"></app-header>
         <!-- Klausau i quoteAdded(custom event) is newQuote per emit -->
         <app-new-quote @quoteAdded="newQuote"></app-new-quote>
         <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
@@ -16,6 +17,7 @@
 <script>
     import QuoteGrid from './components/QuoteGrid.vue';
     import NewQuote from './components/NewQuote.vue';
+    import Header from './components/Header.vue';
     export default {
         data(){
             return{
@@ -28,6 +30,9 @@
 
         methods: {
             newQuote(quote){
+                if(this.quotes.length >= this.maxQuotes){
+                    return alert('Please delete Quotes first!');
+                }
                 // pushinu quote is NewQuotes.vue gauta quote i quotes
                 this.quotes.push(quote)
             },
@@ -39,7 +44,8 @@
 
         components: {
             appQuoteGrid: QuoteGrid,
-            appNewQuote: NewQuote
+            appNewQuote: NewQuote,
+            appHeader: Header
         }
     }
 </script>
