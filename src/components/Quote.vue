@@ -17,9 +17,6 @@
         font-family: 'Arizonia', cursive;
         font-size: 24px;
         color: #6e6e6e;
-        background-color: aqua;
-        padding: 5px 10px;
-        text-align: center;
     }
 
     .quote {
